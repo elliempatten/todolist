@@ -1,0 +1,64 @@
+
+body {
+    font-family: helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.4em;
+  
+    width: 600px;
+    margin: 96px auto;
+  }
+
+
+#todolist-container {
+    margin-top: 64px;
+    padding: 0;
+}
+
+#new-task-input {
+    width: 360px;
+    font-size: 16px;
+    line-height: 1.4em;
+    border: none;
+    border-bottom: 1px solid #888888;
+    margin: 0px 12px;
+}
+
+#new-task-input:focus { /* hover, active, visited are also selectors you can use instead of focus */
+    outline: none;
+    border-bottom-color: #0D99FC;
+}
+
+#add-button {
+    font-size: 16px;
+    line-height: 1.4em;
+
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background: #0D99FC;
+}
+
+.task {
+    list-style: none;
+    font-size: 22px;
+    line-height: 1.8em;
+}
+
+.task.completed {
+    text-decoration: line-through;
+    opacity: 0.5
+}
+
+.delete-button {
+    border: none;
+    font-size: 13px;
+    opacity: 0.5;
+    visibility: hidden;
+    
+}
+
+.buttonChange{
+    visibility: visible;
+
+}
+

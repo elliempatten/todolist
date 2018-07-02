@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="liststyle.css">
+        <title>To Do List</title>
+    </head>
+
+    <body>
+        <h1>To Do List</h1>
+
+            <form>
+                <label> Task Name:
+                    <input id="new-task-input" type="text" placeholder = "Pick up milk"> <! label is for the input element; clicking any element within the label tag will focus on the input element>
+                </label>
+            <button id= "add-button" type="button">Add Task</button>
+        </form>
+
+        <ul id="todolist-container">
+            <li class="task">
+                <label>
+                <input type ="checkbox" class = "checkbox"> Go shopping
+            </label>
+            <button class="delete-button" type="button">Delete</button>
+            </li>
+
+            <li class="task">
+                <label>
+                    <input type="checkbox" class="checkbox"> Go to sleep
+                </label>
+                <button class="delete-button" type="button">Delete</button>
+            </li>
+        </ul>
+
+        <script type = "text/template" id="list-item-template">
+        <li class="task">
+            <label>
+                <input class ="checkbox" type="checkbox">
+                <!--TASK_NAME-->
+            </label>  
+            <button class="delete-button" type="button">Delete</button>
+        </li>
+        </script>
+
+        <!javascript>
+<script src=todolist.js></script>
+    </body>
+</html>
