@@ -59,7 +59,5 @@ todolistContainer.addEventListener("mouseover", function(event){
 })
 
 
-
-//next steps: get this onto github
 //make the delete button actually delete things.
 // then get complete items to move to the bottom of the list
