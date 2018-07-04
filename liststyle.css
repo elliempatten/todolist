@@ -23,9 +23,9 @@ body {
     margin: 0px 12px;
 }
 
-#new-task-input:focus { /* hover, active, visited are also selectors you can use instead of focus */
+#new-task-input:focus { 
     outline: none;
-    border-bottom-color: #0D99FC;
+    border-bottom-color: rgb(91, 132, 245);
 }
 
 #add-button {
@@ -35,7 +35,7 @@ body {
     border: none;
     border-radius: 3px;
     color: white;
-    background: #0D99FC;
+    background: rgb(91,132,245);
 }
 
 .task {
@@ -44,9 +44,12 @@ body {
     line-height: 1.8em;
 }
 
-.task.completed {
+.task.completed label {
     text-decoration: line-through;
-    opacity: 0.5
+}
+
+.task.completed {
+    opacity: 0.5;
 }
 
 .delete-button {
@@ -57,8 +60,17 @@ body {
     
 }
 
-.buttonChange{
+.edit-button {
+    border: none;
+    font-size: 13px;
+    opacity: 0.5;
+    visibility: hidden;
+}
+
+.buttonVisible{
     visibility: visible;
 
 }
+
+
 
