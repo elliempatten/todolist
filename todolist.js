@@ -112,4 +112,4 @@ todolistContainer.addEventListener("mouseover", function(event){
 - prevent a user from adding a blank task
 - move complete items to move to the bottom of the list
 - think about reusable code and not repeating the same thing (ie that while loop - can you take it out and make it a method?)
-- css: add some kind of margin to the second line of a task so it's under the first line of text, not under the textbox */
+- css: add some kind of margin to the second line of a task so it's under the first line of text, not under the textbox. */
