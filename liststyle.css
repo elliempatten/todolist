@@ -42,6 +42,7 @@ body {
     list-style: none;
     font-size: 22px;
     line-height: 1.8em;
+    max-width: 30em;
 }
 
 .task.completed label {

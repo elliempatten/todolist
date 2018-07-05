@@ -23,9 +23,11 @@ addTaskButton.addEventListener("click", function(event){
     }
 
     var checkbox = targetElement.querySelector(".checkbox"); 
-    if (checkbox.checked) { //use a "completed" class to track which items are complete
+    var listItem = targetElement.querySelector(".task-text");
+    if (checkbox.checked && !(listItem.classList.contains("editable"))) { //use a "completed" class to track which items are complete
         targetElement.classList.add("completed");
     }
+
     else {
         targetElement.classList.remove("completed");
     }
@@ -50,31 +52,64 @@ todolistContainer.addEventListener("mouseover", function(event){
     editButton.classList.remove("buttonVisible");
     });
 
-    deleteButton.addEventListener("click", function(event){
-        //console.log("delete button clicked");
-        var ul = targetElement.parentNode;
-        ul.removeChild(targetElement); //why is there an error here?
-
-    });
-
-    editButton.addEventListener("click", function(event){
+    addEdit = editButton.onclick = (function(event){
+        var targetElement = event.toElement;
+        while (!targetElement.classList.contains("task")){
+            targetElement=targetElement.parentElement;
+        } 
         var listItem = targetElement.querySelector(".task-text");
         listItem.contentEditable = true;
+        listItem.classList.add("editable");
+        listItem.addEventListener('keypress', function(evt) {
+            if (evt.which === 13) {
+                evt.preventDefault();
+            }
+        });
+        var checkbox = targetElement.querySelector(".checkbox");
+        checkbox.disabled = true;
+        editButton.innerText= "Save";
         
-    });
+        editButton.onclick = (function(){ //why does it need to be clicked twice to save after editing?
+            listItem.classList.remove("editable");
+            listItem.contentEditable = false;
+            checkbox.disabled = false;
+            editButton.innerText="Edit";
+            editButton.onclick = addEdit;
+
+
+
+        });
+
+            
+        });
+
+        deleteButton.onclick = (function(event){
+            var targetElement = event.toElement;
+            //console.log("Target element is currently: " + targetElement.nodeName); //debugging purposes
+            while (!targetElement.classList.contains("task")){
+                targetElement=targetElement.parentElement;
+            }
+                //console.log("delete button clicked");
+            var ul = targetElement.parentNode; //this line gets called twice! once before and once after the child is removed - repeats even MORE times after clicking the edit button!
+            ul.removeChild(targetElement); //why is there an error here? Decides ul is null??? - anonymous has something to do with these all being anonymous functions. 
+                
+        
+            });
 
 
 });
 
-/*
+
+
 
 
 /* Functionality to add or fix:
-- fix the error that now occurs when deleting. If deleting an element, it starts talking about removing child of a null element (htmlbuttonelement)
-- disable the checkbox when it's editable (as it's currently tricky to edit without checking off the list, and add some kind of border so it's obvious that it's now editable.
+
 - add restrictions for editing- max length etc.
 - make sure strikethrough only applies to the todo text and not the buttons - DONE
 - add an edit button to allow users to edit to do list - MAKE THE BUTTON FUNCTIONAL
 - add local storage mechanism so that the app can save state and maintain to dos after the window is closed
 - prevent a user from adding a blank task
-- move complete items to move to the bottom of the list */
+- move complete items to move to the bottom of the list
+- think about reusable code and not repeating the same thing (ie that while loop - can you take it out and make it a method?)
+- css: add some kind of margin to the second line of a task so it's under the first line of text, not under the textbox */
