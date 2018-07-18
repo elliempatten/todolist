@@ -13,7 +13,19 @@ var template = templateElement.innerHTML; //the actual inner html of the templat
         var taskHTML = template.replace("<!--TASK_NAME-->" , taskName); 
         todolistContainer.insertAdjacentHTML("afterbegin", taskHTML);
     } 
+
+    
 });
+
+newTaskInput.onkeypress = function(evt) {
+        if (evt.which === 13) {
+            evt.preventDefault();
+            if (newTaskInput.focus){
+            addTaskButton.click();
+        }
+        }
+
+        }
 
 //adds a listener to the to do list container to check the checkbox when clicked
  todolistContainer.addEventListener("click", function(event){ 
@@ -32,6 +44,9 @@ var template = templateElement.innerHTML; //the actual inner html of the templat
     else{
         targetElement.classList.remove("completed");
     }
+
+    
+    
     //console.log("classes are: " + targetElement.classList); //debugging
 }); 
 
@@ -100,7 +115,6 @@ todolistContainer.addEventListener("click", function(event){
                 if (evt.which === 13) {
                     evt.preventDefault();
                     editButton.click();
-                    // set it so enter causes a click of the button too
                 }
             }
 
@@ -133,6 +147,7 @@ todolistContainer.addEventListener("click", function(event){
 
 /* Functionality to add or fix:
 
+- refactor to have your "addeventlistener" etc. called in an onload function, might want to give your functions names.
 - add restrictions for editing- max length etc.
 - add local storage mechanism so that the app can save state and maintain to dos after the window is closed
 - prevent a user from adding a blank task

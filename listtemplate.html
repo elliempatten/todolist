@@ -2,17 +2,21 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="liststyle.css">
+        <link href="https://fonts.googleapis.com/css?family=Monoton|Nunito:300,400,700" rel="stylesheet">
         <title>To Do List</title>
     </head>
 
     <body>
-        <h1>To Do List</h1>
+        <div class="container">
+        <div class="heading">To Do List</div>
+
+        <div class = "main-body">
 
             <form>
-                <label> Task Name:
-                    <input id="new-task-input" type="text" placeholder = "Pick up milk"> 
+                <label>
+                    <input id="new-task-input" type="text" placeholder = "Pick up milk" autocomplete="off"> 
                 </label>
-            <button id= "add-button" type="button">Add Task</button>
+            <div class="button-container"><button id= "add-button" type="button">Add Task</button></div>
         </form>
 
         <ul id="todolist-container">
@@ -44,8 +48,14 @@
             <button class="delete-button" type="button">Delete</button>
         </li>
         </script>
+</div>
+    </div>
 
-        <!javascript>
+    <footer>
+        Created by Ellie Patten
+    </footer>
+
+        
 <script src=todolist.js></script>
     </body>
 </html>
