@@ -57,8 +57,10 @@ body{
 }
 
 #new-task-input {
+    box-sizing: border-box;
     position: relative;
-    width: 360px;
+    max-width: 100%;
+    width: 400px;
     font-size: 16px;
     line-height: 1.4em;
     border: none;

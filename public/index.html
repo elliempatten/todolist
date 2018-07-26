@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="liststyle.css">
+
+        <link rel="stylesheet" type="text/css" href="styles/liststyle.css">
         <link href="https://fonts.googleapis.com/css?family=Monoton|Nunito:300,400,700" rel="stylesheet">
         <title>To Do List</title>
     </head>
 
     <body>
         <div class="container">
-        <div class="heading">To Do List</div>
+        <div class="heading">To Do</div>
 
         <div class = "main-body">
 
             <form>
                 <label>
-                    <input id="new-task-input" type="text" placeholder = "Pick up milk" autocomplete="off"> 
+                    <input id="new-task-input" type="text" placeholder = "Get shit done" autocomplete="off"> 
                 </label>
             <div class="button-container"><button id= "add-button" type="button">Add Task</button></div>
         </form>
@@ -22,7 +23,7 @@
         <ul id="todolist-container">
             <li class="task">
                 <label>
-                <input type ="checkbox" class = "checkbox"> <span class="task-text">Go shopping</span>
+                <input type ="checkbox" class = "checkbox"> <span class="task-text">Create a web page</span>
             </label>
             <button class="edit-button edit-mode" type="button">Edit</button>
             <button class="delete-button" type="button">Delete</button>
@@ -31,7 +32,7 @@
 
             <li class="task">
                 <label>
-                    <input type="checkbox" class="checkbox"> <span class="task-text">Go to sleep</span>
+                    <input type="checkbox" class="checkbox"> <span class="task-text">Write to do list</span>
                 </label>
                 <button class="edit-button edit-mode" type="button">Edit</button>
                 <button class="delete-button" type="button">Delete</button>
@@ -56,6 +57,6 @@
     </footer>
 
         
-<script src=todolist.js></script>
+<script src=js/todolist.js></script>
     </body>
 </html>
