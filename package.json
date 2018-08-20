@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.16.3",
-    "express-formidable": "^1.0.0"
+    "express-formidable": "^1.0.0",
+    "shortid": "^2.2.13"
   },
   "devDependencies": {},
   "scripts": {

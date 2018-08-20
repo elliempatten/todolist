@@ -1,62 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <link rel="stylesheet" type="text/css" href="styles/liststyle.css">
-        <link href="https://fonts.googleapis.com/css?family=Monoton|Nunito:300,400,700" rel="stylesheet">
-        <title>To Do List</title>
-    </head>
+<head>
+    <meta charset="utf-8">
 
-    <body>
-        <div class="container">
+    <link rel="stylesheet" type="text/css" href="styles/liststyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Nunito:300,400,700" rel="stylesheet">
+    <title>To Do List</title>
+</head>
+
+<body>
+    <div class="container">
         <div class="heading">To Do</div>
 
-        <div class = "main-body">
+        <div class="main-body">
 
-            <form>
-                <label>
-                    <input id="new-task-input" type="text" placeholder = "Get shit done" autocomplete="off"> 
-                </label>
-            <div class="button-container"><button id= "add-button" type="button">Add Task</button></div>
-        </form>
+            <form action="/create-todo" method="POST">
+                <!--<label>-->
+                <textarea name="newtodo" type="text" placeholder="Get shit done" autocomplete="off"></textarea>
+                <!--<label>-->
+                <div class="button-container">
+                    <button id="add-button" type="submit">Add Task</button>
+                </div>
+            </form>
 
-        <ul id="todolist-container">
-            <li class="task">
-                <label>
-                <input type ="checkbox" class = "checkbox"> <span class="task-text">Create a web page</span>
-            </label>
-            <button class="edit-button edit-mode" type="button">Edit</button>
-            <button class="delete-button" type="button">Delete</button>
-            
-            </li>
+            <ul id="todolist-container">
 
-            <li class="task">
-                <label>
-                    <input type="checkbox" class="checkbox"> <span class="task-text">Write to do list</span>
-                </label>
-                <button class="edit-button edit-mode" type="button">Edit</button>
-                <button class="delete-button" type="button">Delete</button>
-            </li>
-        </ul>
+            </ul>
 
-        <script type = "text/template" id="list-item-template">
-        <li class="task">
+            <script type="text/template" id="list-item-template">
+        <li class="task/%COMPLETE%/" id="/%IDNEEDED%/">
             <label>
-                <input class ="checkbox" type="checkbox"><span class="task-text">
-                <!--TASK_NAME-->
-            </span></label> 
+                <input class ="checkbox" type="checkbox" "/%CHECK%/"><span id="task-text" class="task-text"><!--TASK_NAME--></span></label> 
             <button class="edit-button edit-mode" type="button">Edit</button> 
-            <button class="delete-button" type="button">Delete</button>
+            <button class="delete-button" type="submit">Delete</button>
         </li>
         </script>
-</div>
+        </div>
     </div>
 
     <footer>
         Created by Ellie Patten
     </footer>
 
-        
-<script src=js/todolist.js></script>
-    </body>
+
+    <script src="todolist.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</body>
+
 </html>
