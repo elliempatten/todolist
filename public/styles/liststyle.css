@@ -56,16 +56,18 @@ body{
     padding: 0;
 }
 
-#new-task-input {
+
+
+textarea {
     box-sizing: border-box;
     position: relative;
     max-width: 100%;
     width: 400px;
     font-size: 16px;
-    line-height: 1.4em;
+    line-height: 12px;
+    padding-top: 9px;
     border: none;
     border-bottom: 1px solid #175e63;
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -83,8 +85,9 @@ body{
     background: #f7e26b;
 }
 
+
 .button-container {
-    margin-top: 20px;
+    margin-top: 16px;
     text-align: center;
 }
 
