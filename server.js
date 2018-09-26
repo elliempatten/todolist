@@ -13,18 +13,18 @@ var getToDos = app.get("/get-todos", function (req, res) {
     res.sendFile(__dirname + "/data/data.json");
 })
 
-app.post("/create-todo", (req, res) => {
-    console.log(req.fields);
+app.post("/todo", (req, res) => {
+    console.log("fields: " + req.fields);
     var yourData = req.fields;
-    var todoContent = yourData.newtodo;
+    var name = yourData.name;
+    var complete = yourData.complete;
+    console.log("id:" + yourData.id + " name: " + name + "complete: " + complete);
     fs.readFile(__dirname + '/data/data.json', function (error, file) {
         var currentToDos = JSON.parse(file);
-        var taskComplete = false;
         var uniqueId = shortid.generate();
-        var newToDo = { "id": uniqueId, "name": todoContent, "complete": taskComplete };
+        var newToDo = { "id": uniqueId, "name": name, "complete": complete };
         currentToDos.push(newToDo);
         currentToDos = JSON.stringify(currentToDos);
-        //console.log(updatedBlogPosts);
         fs.writeFile(__dirname + '/data/data.json', currentToDos, function (error) {
             console.log("written to data.json!");
             res.send(newToDo);

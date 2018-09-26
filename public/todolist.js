@@ -18,13 +18,19 @@ function ready() {
 
 form.addEventListener('submit', function (event) {
     event.preventDefault(); 
-    var formActionUrl = form.action;
-    console.log("form action is: " + formActionUrl + " and type is: " + typeof (formActionUrl));
+    /* var formActionUrl = form.action;
+    console.log("form action is: " + formActionUrl + " and type is: " + typeof (formActionUrl)); */
     var formData = new FormData(form);
+    var name;
     for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
+        name = pair[1];
     }
-    postToDos(formActionUrl, formData);
+    console.log(name);
+    var url = "/todo";
+    var id="";
+    var complete = false;
+    
+    postToDos(url, id, name, complete);
 });
 
 newTaskInput.onkeypress = function (evt) {
@@ -36,11 +42,15 @@ newTaskInput.onkeypress = function (evt) {
     }
 }
 
-function postToDos(url, data) {
-    //console.log("you got to the post to dos method");
+function postToDos(url, id, name, complete) {
+    var todo = {"id": id, "name": name, "complete":complete};
+    console.log("you got to the post to dos method");
+    console.log("posting: " + todo);
+    console.log("posting stringified: " + JSON.stringify(todo));
     fetch(url, {
         method: 'POST',
-        body: data
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(todo)
     })
         .then((res) => {
             res.json()
