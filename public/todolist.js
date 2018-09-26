@@ -1,7 +1,6 @@
 
 var addTaskButton = document.getElementById("add-button");
 var newTaskInput = document.querySelector("textarea");
-//var newTaskInput = document.getElementsByClassList[0]("new-task-input");
 var todolistContainer = document.getElementById("todolist-container");
 var templateElement = document.getElementById("list-item-template");
 var template = templateElement.innerHTML; //the actual inner html of the template element you've retrieved above
@@ -18,10 +17,9 @@ function ready() {
 }
 
 form.addEventListener('submit', function (event) {
-    event.preventDefault(); // prevents the form from contacting our server automatically (we want to do it ourselves)
-    var formActionUrl = form.action; // 'form.action' is the url '/create-post'
+    event.preventDefault(); 
+    var formActionUrl = form.action;
     console.log("form action is: " + formActionUrl + " and type is: " + typeof (formActionUrl));
-    //var taskName = newTaskInput.value;
     var formData = new FormData(form);
     for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
@@ -46,8 +44,7 @@ function postToDos(url, data) {
     })
         .then((res) => {
             res.json()
-                .then(function (json) { /////
-                    //console.log(json);
+                .then(function (json) { 
                     var id = json.id;
                     var newToDo = json.name;
                     console.log("new to do: " + newToDo);
@@ -108,9 +105,9 @@ var addToDo = function (id, taskName, complete) { //add id as a parameter
 
 //adds a listener to the to do list container to check the checkbox when clicked
 todolistContainer.addEventListener("click", function (event) {
-    var targetElement = event.toElement; //get the element that was clicked
+    var targetElement = event.toElement; 
     var clickedElement = targetElement;
-    while (!targetElement.classList.contains("task")) { //move up the DOM tree by getting the parent of the element that was clicked until you reach the task list item
+    while (!targetElement.classList.contains("task")) { 
         targetElement = targetElement.parentElement;
     }
     var id = targetElement.id;
@@ -120,14 +117,10 @@ todolistContainer.addEventListener("click", function (event) {
     else if (clickedElement.classList.contains("delete-button")) {
         deleteTodo('delete-todo', id);
     }
-    // need to remove the json object containing the id - so will require a method to be called that sends the id to the server
-    // if the edit button was clicked
+    
     else if (clickedElement.classList.contains("edit-button")) {
         var editButton = clickedElement;
-        //console.log("Target element is currently: " + targetElement.nodeName); //debugging purposes
-        //console.log("Target element is currently: " + targetElement.nodeName); //debugging purposes
         if (editButton.classList.contains("edit-mode")) {
-            // var id = get the id of the list element (will be id in html) 
             var listItem = targetElement.querySelector(".task-text");
             listItem.contentEditable = true;
             listItem.classList.add("editing");
@@ -159,7 +152,7 @@ todolistContainer.addEventListener("click", function (event) {
             var newListItem = listItem.innerHTML;
             console.log("new task name: " + newListItem);
             updateToDoContents('/edit-todo', id, newListItem);
-            // NEED A WAY OF TRACKING THE OLD TO DO OR WHAT THE OLD TO DO WAS OR WHAT THE ID WAS. so you know which entry to update.
+            
         }
 
 
@@ -172,12 +165,6 @@ deleteTodo = (url, id) =>{
         method: 'DELETE'
     })
     .then(function(res){
-        console.log("then is happening");
-       /*  res.json() 
-        .then(function (json) {
-            console.log(json);
-            showToDosOnPage(json);
-        }); */
         location.reload();
     });
 }
@@ -215,13 +202,10 @@ updateCompleteJson = (todo, url) => {
 // on mouse over the list item (words or checkbox), set the visibility of the delete and edit buttons to visible.
 todolistContainer.addEventListener("mouseover", function (event) {
     var targetElement = event.toElement;
-    //console.log("Target element is currently: " + targetElement.nodeName); //debugging purposes
     if (targetElement.tagName != "UL") {
         while (!targetElement.classList.contains("task")) {
             targetElement = targetElement.parentElement;
-            //console.log("at end of an iteration: " + targetElement);
         }
-        //console.log("after loop complete: " + targetElement);
         var deleteButton = targetElement.querySelector(".delete-button");
         var genericButton = targetElement.querySelector(".edit-button");
         deleteButton.classList.add("buttonVisible");

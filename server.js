@@ -9,7 +9,6 @@ var shortid = require('shortid');
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(formidable());
 
-//make sure this gets called when the page loads and after adding the to do, editing, deleting, completing etc.
 var getToDos = app.get("/get-todos", function (req, res) {
     res.sendFile(__dirname + "/data/data.json");
 })
@@ -17,7 +16,6 @@ var getToDos = app.get("/get-todos", function (req, res) {
 app.post("/create-todo", (req, res) => {
     console.log(req.fields);
     var yourData = req.fields;
-    //console.log("in the post request");
     var todoContent = yourData.newtodo;
     fs.readFile(__dirname + '/data/data.json', function (error, file) {
         var currentToDos = JSON.parse(file);
@@ -33,7 +31,7 @@ app.post("/create-todo", (req, res) => {
         });
     });
 });
-//should be put
+
 app.patch("/checkbox-changed", (req, res) => {
     var taskToUpdate = req.fields;
     var taskName = taskToUpdate.name;
@@ -65,7 +63,6 @@ app.patch("/edit-todo", (req, res) => {
     fs.readFile(__dirname + '/data/data.json', function (error, file) {
         var currentToDos = JSON.parse(file);
         for (var i = 0; i < currentToDos.length; i++) {
-            //console.log("for loop");
             if (currentToDos[i].id == givenId) {
                 console.log("we have a match!");
                 console.log("task: " + currentToDos[i].name);
