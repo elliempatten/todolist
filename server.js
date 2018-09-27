@@ -32,7 +32,7 @@ app.post("/todo", (req, res) => {
 });
 
 
- app.put("/todo/:id", (req, res) => {
+app.put("/todo/:id", (req, res) => {
     var id = req.params.id; //fields also works
     var name = req.fields.newTask;
     var complete = req.fields.complete;
@@ -51,9 +51,9 @@ app.post("/todo", (req, res) => {
         });
     });
 
-}); 
+});
 
- app.delete("/todo/:id", (req, res) => {
+app.delete("/todo/:id", (req, res) => {
     console.log("reaches delete method");
     var givenId = req.params.id;
     var newToDos = [];
@@ -66,15 +66,15 @@ app.post("/todo", (req, res) => {
         }
         newToDos = JSON.stringify(newToDos);
         console.log("array to add: " + newToDos);
-        fs.writeFile(__dirname + "/data/data.json", newToDos, function (err){ 
+        fs.writeFile(__dirname + "/data/data.json", newToDos, function (err) {
             console.log("array to add while in the writeFile:" + newToDos);
             if (err) return console.log(err);
             //res.send(newToDos);
             res.end();
-        
+
         });
     });
-}); 
+});
 
 
 
