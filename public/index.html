@@ -4,20 +4,21 @@
 <head>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" href="styles/liststyle.css">
-    <link href="https://fonts.googleapis.com/css?family=Monoton|Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/liststyle.css/liststyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <title>To Do List</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="heading">To Do</div>
+        <div class="heading">Ellie's to do list</div>
 
         <div class="main-body">
 
-            <form action="/create-todo" method="POST">
+            <form>
                 <!--<label>-->
-                <textarea name="newtodo" type="text" placeholder="Get stuff done" autocomplete="off"></textarea>
+                <textarea name="newtodo" type="text" placeholder="Type your task here" onfocus="this.placeholder=''"
+                    autocomplete="off"></textarea>
                 <!--<label>-->
                 <div class="button-container">
                     <button id="add-button" type="submit">Add Task</button>
@@ -27,11 +28,13 @@
             <ul id="todolist-container">
 
             </ul>
+            <p class="no-todo-message">You have no items on your to do list! You're either super productive or in
+                denial. When you add something, it will appear here.</p>
 
             <script type="text/template" id="list-item-template">
-        <li class="task/%COMPLETE%/" id="/%IDNEEDED%/">
+                <li class="task/%COMPLETE%/" id="/%IDNEEDED%/">
             <label>
-                <input class ="checkbox" type="checkbox" "/%CHECK%/"><span id="task-text" class="task-text"><!--TASK_NAME--></span></label> 
+                <input class ="checkbox" type="checkbox" /%CHECK%/><span id="task-text" class="task-text"><!--TASK_NAME--></span></label> 
             <button class="edit-button edit-mode" type="button">Edit</button> 
             <button class="delete-button" type="submit">Delete</button>
         </li>
@@ -41,6 +44,10 @@
 
     <footer>
         Created by Ellie Patten
+        <div class="images">
+            <a href="https://twitter.com/elliempatten"><img alt="Twitter logo" src="https://png.icons8.com/metro/1600/twitter.png"></a>
+            <a href="https://github.com/elliempatten"><img alt="GitHub logo" src="https://i.pinimg.com/originals/11/8e/6f/118e6f39fac9344d6589c84d5ee9e667.png"></a>
+        </div>
     </footer>
 
 
