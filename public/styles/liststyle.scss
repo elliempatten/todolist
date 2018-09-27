@@ -69,6 +69,7 @@ textarea {
     border: none;
     border-bottom: 1px solid #175e63;
     text-align: center;
+    resize: none;
 }
 
 #new-task-input:focus { 
@@ -101,6 +102,17 @@ textarea {
     padding: 8px;
     border-radius: 6px;
     margin: 10px;
+    white-space: nowrap;
+    overflow-x: auto;
+
+&.editable{
+    .task-text {
+    box-shadow: 0 0 5px rgba(81,203,238,1);
+    padding: 5px 5px 5px 5px;
+    border: 1px solid rgba(81, 203, 238, 1);
+    border-radius: 4px;
+}
+}
 }
 
 .task.completed label {
@@ -131,18 +143,12 @@ textarea {
 
 }
 
-.editing {
-    box-shadow: 0 0 5px rgb(81,203,238,1);
-    padding: 5px 5px 5px 5px;
-    border: 1px solid rgba(81, 203, 238, 1);
-    border-radius: 4px;
-}
 
 footer {
     position: absolute;
     right: 0;
     left: 0;
-    padding: 1rem;
+    padding: 1rem; 
     bottom: 0;
     height: 50px;
     background: #f7e26b;
@@ -150,7 +156,6 @@ footer {
     margin-bottom: 20px;
 
 }
-
 
 
 
